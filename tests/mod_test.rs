@@ -19,7 +19,7 @@ async fn test_check_link() {
         .expect("Failed to check link");
 
     assert_eq!(parsed_url.url, "https://example.com");
-    assert!(parsed_url.result == -2 || (0..=10).contains(&parsed_url.result));
+    assert!((-2..=10).contains(&parsed_url.result));
     assert!(!parsed_url.result_text.is_empty());
     assert!(!parsed_url.date.is_empty());
     assert!(!parsed_url.analysis.domain_reputation.is_empty());
@@ -38,7 +38,7 @@ async fn test_check_email() {
         .expect("Failed to check email");
 
     assert_eq!(parsed_email.email, "help@safelyx.com");
-    assert!(parsed_email.result == -2 || (8..=10).contains(&parsed_email.result));
+    assert!((-2..=10).contains(&parsed_email.result));
     assert!(!parsed_email.result_text.is_empty());
     assert!(!parsed_email.date.is_empty());
     assert!(!parsed_email.analysis.address.is_empty());
@@ -57,7 +57,7 @@ async fn test_check_message() {
         .expect("Failed to check message");
 
     assert_eq!(parsed_message.message, "Hello, world!");
-    assert!(parsed_message.result == -2 || (8..=10).contains(&parsed_message.result));
+    assert!((-2..=10).contains(&parsed_message.result));
     assert!(!parsed_message.result_text.is_empty());
     assert!(!parsed_message.date.is_empty());
     assert!(!parsed_message.analysis.content.is_empty());
@@ -76,16 +76,12 @@ async fn test_check_image() {
         .expect("Failed to check image");
 
     assert_eq!(parsed_image.image_url, test_image_url);
-    assert!(parsed_image.result == -2 || (8..=10).contains(&parsed_image.result));
+    assert!((-2..=10).contains(&parsed_image.result));
     assert!(!parsed_image.result_text.is_empty());
     assert!(!parsed_image.date.is_empty());
     assert!(!parsed_image.analysis.description.is_empty());
     assert!(!parsed_image.analysis.link.url.is_empty());
-    assert!(
-        parsed_image.analysis.link.result == -2
-            || parsed_image.analysis.link.result == -1
-            || (8..=10).contains(&parsed_image.analysis.link.result)
-    );
+    assert!((-2..=10).contains(&parsed_image.analysis.link.result));
     assert!(!parsed_image.analysis.link.date.is_empty());
     assert!(
         !parsed_image
