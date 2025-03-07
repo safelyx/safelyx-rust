@@ -1,9 +1,9 @@
 [package]
 name = "safelyx"
-version = "0.1.0"
+version = "0.1.1"
 rust-version = "1.85"
 edition = "2024"
-license = "AGPL-3.0-or-later"
+license = "ISC"
 authors = ["Safelyx <help@safelyx.com>"]
 description = "Safelyx Rust SDK"
 readme = "README.md"
